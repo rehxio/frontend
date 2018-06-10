@@ -49,10 +49,13 @@
 	"dependencies": {
 		"@material-ui/core": "^1.2.0",
 		"@material-ui/icons": "^1.1.0",
+		"@types/core-js": "^2.5.0",
+		"core-js": "^2.5.7",
 		"google-maps-react": "^2.0.2",
 		"prop-types": "^15.6.1",
 		"react": "^16.4.0",
 		"react-dom": "^16.4.0",
+		"react-geolocated": "^2.4.0",
 		"react-icons": "^2.2.7",
 		"react-native-vector-icons": "^4.6.0"
 	},

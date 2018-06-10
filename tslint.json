@@ -5,6 +5,10 @@
 			true,
 			"array"
 		],
+		"compilerOptions": {
+			"types": ["core-js"],
+			"lib": ["es2017", "dom"]
+		},
 		"class-name": true,
 		"comment-format": [
 			true,

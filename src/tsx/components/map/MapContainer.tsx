@@ -6,66 +6,62 @@ export interface MapContainerProps {
     google: any;
 }
 
+export interface MapContainerState {
+    lat: any;
+    lng: any;
+    zoom: any;
+}
 const style = {
-    width: '100%',
-    height: '100%'
+    width: 'auto'
   };
 
-class MapContainer extends React.Component<MapContainerProps, {}> {
+class MapContainer extends React.Component<MapContainerProps, MapContainerState> {
 
-    onMapClicked() {
-        console.log('Mapa');
+    constructor(props) {
+      super(props);
+      this.state = {
+        lat: 19.9274,
+        lng: 13.2836,
+        zoom: 9
+      };
+      }
+
+
+    onMapClicked = () => {
+        console.log(this.state.lat);
     }
 
-    onMarkerClick() {
+    onMarkerClick = () => {
         console.log('marca');
     }
 
-
-/*
-onMarkerClick = (props, marker, e) =>
-this.setState({
-  selectedPlace: props,
-  activeMarker: marker,
-  showingInfoWindow: true
-})
-
-onMapClicked = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
+    getLocation = () => {
+      return navigator.geolocation.getCurrentPosition(position => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        console.log(position.coords.latitude);
+        console.log(this.state.lat);
+      });
     }
-  }
-*/
-
-onInfoWindowClose() {}
-
-selectedPlace() {}
-
 
 
 render() {
+  this.getLocation();
     return (
       <Map google={this.props.google}
           style={style}
-          center={{
-            lat: 48.1486,
-            lng: -17.1077
+          initialCenter={{
+            lat: this.state.lat,
+            lng: this.state.lng
           }}
-          zoom={15}
-          onClick={this.onMapClicked}>
-        <Marker onClick={this.onMarkerClick}
+          zoom={this.state.zoom}>
+
+          <Marker onClick={this.onMarkerClick}
                 name={'Current location'} />
 
-        {/* <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-        </InfoWindow> */}
+        <InfoWindow></InfoWindow>
       </Map>
     );
   }
