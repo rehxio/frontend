@@ -41,8 +41,8 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
           lat: position.coords.latitude,
           lng: position.coords.longitude
         });
-        console.log(position.coords.latitude);
-        console.log(this.state.lat);
+        console.log(position.coords.latitude); // Posicion que te da el getCurrentPosition
+        console.log(this.state.lat); // Posicion que le asignas al this.state.lat de la func getCurrentPosition
       });
     }
 
