@@ -1,6 +1,7 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React = require('react');
 import * as keys from '../../../config/pass';
+import * as MapContainerStyle from '../../css/MapContainer.css';
 
 export interface MapContainerProps {
 	google: any;
@@ -85,7 +86,7 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 
 	render() {
 		return (
-			<Map google={this.props.google}
+			<Map google={this.props.google} className={MapContainerStyle.index}
 				style={style}
 				center={{
 					lat: this.state.lat,

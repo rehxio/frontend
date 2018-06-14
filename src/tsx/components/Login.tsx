@@ -24,14 +24,16 @@ export default class Login extends React.Component<HeaderProps, {}> {
 	}
 
 	render() {
-		return <div className={styles.page}>
-					<div className={styles.login}>
-						<h1>Bienvenido a Where Is Your Car</h1>
-						<form>
-							<p><label>Usuario: </label><input /></p>
-							<p><label>Contraseña: </label><input type='password' /></p>
-							<button type='submit' onClick={this.checkLogin}>Iniciar</button>
-						</form>
+		return <div className={styles.index}>
+					<div className={styles.page}>
+						<div className={styles.login}>
+							<h1>Bienvenido a Where Is Your Car</h1>
+							<form>
+								<p><label>Usuario: </label><input /></p>
+								<p><label>Contraseña: </label><input type='password' /></p>
+								<button type='submit' onClick={this.checkLogin}>Iniciar</button>
+							</form>
+						</div>
 					</div>
 				</div>;
 	}
