@@ -1,27 +1,19 @@
 import * as React from 'react';
-import SwipeableTemporaryDrawer from './components/drawer/SwipeableTemporaryDrawer';
-import MapContainer from './components/map/MapContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './containers/Header';
+import Home from './pages/Home';
+import stores from './stores';
+import { Provider } from 'mobx-react';
 
-export interface AppState {
-    zoom?: any;
-    lat?: any;
-    lng?: any;
-}
-
-export default class App extends React.Component<{}, AppState> {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
-    render() {
-        return(
-            <div><SwipeableTemporaryDrawer/>
-                <MapContainer
-                />
-            </div>
-        );
-    }
+export default class App extends React.Component {
+	render() {
+		return <Provider {...stores}>
+			<Router>
+				<div>
+					<Header />
+					<Route exact path='/' component={Home} />
+				</div>
+			</Router>
+		</Provider>;
+	}
 }

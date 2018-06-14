@@ -1,0 +1,55 @@
+.SwipeableDrawer {
+   background: grey;
+}
+
+.button {
+   width: 250px;
+}
+   
+.drawer {
+   background: 'antiquewhite';
+   height: '100%';
+}
+
+.UserIcon {
+   width: 175;
+   height: 175;
+   margin: 'auto';
+   display: 'flex';
+   justify-content: 'center';
+   align-items: 'center';
+}
+
+.list {
+   width: 250;
+   justify-content: 'center';
+   align-items: 'center';
+   margin: 'auto';
+}
+
+.info {
+   display: 'flex';
+   margin: 'auto';
+   justify-content: 'center';
+   align-items: 'center';
+}
+.drawerButton {
+   width: 250px;
+   font-family: sans-serif;
+   color: black;
+}
+
+.barButton {
+   width: 170px;
+}
+
+.topStuff {
+ display: flex;
+ flex-direction: row;
+}
+
+
+
+
+
+
