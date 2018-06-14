@@ -2,14 +2,16 @@ import * as React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import * as SwipeableDrawerStyle from './SwipeableDrawerStyles.css';
 import * as FontAwesome from 'react-icons/lib/fa';
+import MapContainer from '../map/MapContainer';
+
+
 
 const styles = {
   drawer: {
-    background: 'antiquewhite',
+    background: '#80d7ff',
     height: '100%'
   },
   UserIcon: {
@@ -18,7 +20,8 @@ const styles = {
     margin: 'auto',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: 'black'
   },
   list: {
     width: 250,
@@ -29,8 +32,9 @@ const styles = {
   info: {
     display: 'flex',
     margin: 'auto',
-    justifyContent: 'center',
-    alignItems: 'center'
+    height: '51%',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
   }
 };
 
@@ -42,7 +46,7 @@ export interface SwipeableTemporaryDrawerProps {
   classes: any;
 }
 
-class SwipeableTemporaryDrawer extends React.Component <SwipeableTemporaryDrawerProps, SwipeableTemporaryDrawerState> {
+class SwipeableTemporaryDrawer extends React.Component<SwipeableTemporaryDrawerProps, SwipeableTemporaryDrawerState> {
   constructor(props: SwipeableTemporaryDrawerProps) {
     super(props);
     this.state = {
@@ -55,34 +59,52 @@ class SwipeableTemporaryDrawer extends React.Component <SwipeableTemporaryDrawer
     this.setState({ open: !this.state.open });
   }
 
+  onChange() {
+
+  }
+
+
   render() {
     const { classes } = this.props;
     return <div>
-      <Button onClick={this.toggleDrawer}><FontAwesome.FaBars size={30}/></Button>
+      <div className={SwipeableDrawerStyle.topStuff}>
+        <div className={SwipeableDrawerStyle.menuButton}>
+          <Button onClick={this.toggleDrawer}><FontAwesome.FaBars size={30} /></Button>
+        </div>
+        <div className={SwipeableDrawerStyle.topButton}>
+          <button onClick={this.onChange} className={SwipeableDrawerStyle.funcButton}><span>Park</span></button>
+          <button className={SwipeableDrawerStyle.funcButton}><span>Move</span></button>
+          <button className={SwipeableDrawerStyle.funcButton}><span>Where did I park?</span></button>
+          <button className={SwipeableDrawerStyle.funcButton} style={{fontSize: '14px'}}><span>Where should I park?<FontAwesome.FaStar/></span></button>
+        </div>
+      </div>
       <SwipeableDrawer open={this.state.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
-        <div className={classes.drawer} tabIndex={0} role='button' /*onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}*/>
-        <div className={classes.UserIcon}><FontAwesome.FaUser size={90}/></div>
-        <Divider/>
+        <div className={classes.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
+          <div className={classes.UserIcon}><FontAwesome.FaUser size={40} /></div>
+          <Divider />
           <div className={classes.list}>
-            <Button className={SwipeableDrawerStyle.button}>Perfil</Button>
-              <br/>
-            <Button className={SwipeableDrawerStyle.button}>Vehículos</Button>
-              <br/>
-            <Button className={SwipeableDrawerStyle.button}>Info</Button>
-            <br/>
-            <Button className={SwipeableDrawerStyle.button}>Top Sites</Button>
+            <Button className={SwipeableDrawerStyle.drawerButton}>Perfil</Button>
+            <br />
+            <Button className={SwipeableDrawerStyle.drawerButton}>Vehículos</Button>
+            <br />
+            <Button className={SwipeableDrawerStyle.drawerButton}>Info</Button>
+            <br />
+            <Button className={SwipeableDrawerStyle.drawerButton}>Top Sites</Button>
           </div>
-          <Divider/>
+          <Divider />
           <div className={classes.info}>
-          <Button>
-            <FontAwesome.FaGithub size={30}/>
-          </Button>
-          <Button>
-            <FontAwesome.FaTwitter size={30}/>
-          </Button>
-          <Button>
-          <FontAwesome.FaFacebookSquare size={30}/>
-          </Button>
+            <Button size={'small'}>
+              <FontAwesome.FaGithub size={20} style={{ color: 'black' }} />
+            </Button>
+            <Button size={'small'}>
+              <FontAwesome.FaTwitter size={20} style={{ color: 'black' }} />
+            </Button>
+            <Button size={'small'}>
+              <FontAwesome.FaFacebookSquare size={20} style={{ color: 'black' }} />
+            </Button>
+            <Button size={'small'}>
+              <FontAwesome.FaInfoCircle size={20} style={{ color: 'black' }} />
+            </Button>
           </div>
         </div>
       </SwipeableDrawer>

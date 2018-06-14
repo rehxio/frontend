@@ -2,6 +2,73 @@
     background: grey;
 }
 
-.button {
+.drawerButton {
     width: 250px;
+    font-family: sans-serif;
+    color: black;
 }
+
+.barButton {
+    width: 170px;
+}
+
+.topStuff {
+  display: flex;
+  flex-direction: row;
+}
+
+.menuButton {
+  padding: 0px;
+  border: 0px;
+}
+
+.funcButton {
+    display: inline-block;
+    border-radius: 2px;
+    background-color:#006999;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .funcButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .funcButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .funcButton:hover span {
+    padding-right: 25px;
+  }
+  
+  .funcButton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+.topButton {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
