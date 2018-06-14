@@ -57,5 +57,5 @@
 
 .should {
 	composes: funcButton;
-	width: 15%;
+	width: 15em;
 }
