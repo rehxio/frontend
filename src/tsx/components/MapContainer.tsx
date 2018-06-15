@@ -13,6 +13,7 @@ export interface MapContainerProps {
 export interface MarkersState {
 	latitude: number;
 	longitude: number;
+	id: string;
 }
 
 export interface MapContainerState {
@@ -52,15 +53,15 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			});
-			this.addCurrentMarker(this.state.lat, this.state.lng);
+			this.addCurrentMarker(this.state.lat, this.state.lng, '0');
 		});
 	}
 
 
-	addParkMarker(lat, lng) {
+	addParkMarker(lat, lng, id) {
 		const newParkMarkers = this.state.parkMarkers;
 		if (newParkMarkers !== undefined) {
-			newParkMarkers.push({ latitude: lat, longitude: lng });
+			newParkMarkers.push({ latitude: lat, longitude: lng , id});
 			this.setState({
 				parkMarkers: newParkMarkers
 			});
@@ -68,10 +69,10 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 	}
 
 
-	addCurrentMarker(lat, lng) {
+	addCurrentMarker(lat, lng, id) {
 		const newOwnMarkers = this.state.ownMarkers;
 		if (newOwnMarkers !== undefined) {
-			newOwnMarkers.push({ latitude: lat, longitude: lng });
+			newOwnMarkers.push({ latitude: lat, longitude: lng, id});
 			this.setState({
 				ownMarkers: newOwnMarkers
 			});
@@ -95,8 +96,8 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 				onClick={this.onMapClicked}
 
 			>
-				{this.state.ownMarkers.map(marker => <Marker position={{ lat: marker.latitude, lng: marker.longitude }} />)}
-				{this.state.parkMarkers.map(marker => <Marker position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+				{this.state.ownMarkers.map(marker => <Marker key={marker.id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+				{this.state.parkMarkers.map(marker => <Marker key={marker.id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
 
 			</Map>
 		);

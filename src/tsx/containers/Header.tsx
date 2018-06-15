@@ -10,7 +10,7 @@ export interface HeaderProps {
 	sideMenuStore?: SideMenuStore;
 }
 
-@inject('loginStore')
+@inject('sideMenuStore')
 @observer
 export default class Header extends React.Component<HeaderProps, {}> {
 	constructor(props) {
