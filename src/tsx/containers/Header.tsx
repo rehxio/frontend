@@ -22,16 +22,12 @@ export default class Header extends React.Component<HeaderProps, {}> {
 		this.props.sideMenuStore.toggleDrawer();
 	}
 
-	onChange() {
-
-	}
-
 	render() {
 		return <div>
 					<nav className={ButtonBar.menuButton}>
 						<Button onClick={this.toggleDrawer}><FontAwesome.FaBars size={30} /></Button>
 							<div className={ButtonBar.topButton}>
-								<button onClick={this.onChange} className={ButtonBar.funcButton}><span>Park</span></button>
+								<button className={ButtonBar.funcButton}><span>Park</span></button>
 								<button className={ButtonBar.funcButton}><span>Move</span></button>
 								<button className={ButtonBar.funcButton}><span>Where did I park?</span></button>
 								<button className={ButtonBar.should}><span>Where should I park?<FontAwesome.FaStar /></span></button>
