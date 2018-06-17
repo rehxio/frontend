@@ -12,26 +12,26 @@
 }
 
 .UserIcon {
-   width: 175;
-   height: 175;
-   margin: 'auto';
-   display: 'flex';
-   justify-content: 'center';
-   align-items: 'center';
+   width: 175px;
+   height: 175px;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .list {
-   width: 250;
-   justify-content: 'center';
-   align-items: 'center';
-   margin: 'auto';
+   width: 250px;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
 }
 
 .info {
-   display: 'flex';
-   margin: 'auto';
-   justify-content: 'center';
-   align-items: 'center';
+   display: flex;
+   margin: auto;
+   justify-content: center;
+   align-items: center;
 }
 .drawerButton {
    width: 250px;
@@ -44,8 +44,8 @@
 }
 
 .topStuff {
- display: flex;
- flex-direction: row;
+   display: flex;
+   flex-direction: row;
 }
 
 
