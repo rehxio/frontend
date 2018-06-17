@@ -27,34 +27,37 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 
 	render() {
 		return <div>
-					<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
-						<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
-							<div className={SideMenuStyle.UserIcon}><FontAwesome.FaUser size={90} /></div>
-							<Divider />
-							<div className={SideMenuStyle.list}>
-								<Button className={SideMenuStyle.button}>Perfil</Button>
-								<br />
-								<Button className={SideMenuStyle.button}>Vehículos</Button>
-								<br />
-								<Button className={SideMenuStyle.button}>Info</Button>
-								<br />
-								<Button className={SideMenuStyle.button}>Top Sites</Button>
-							</div>
-							<Divider />
-							<div className={SideMenuStyle.info}>
-								<Button>
-									<FontAwesome.FaGithub size={30} />
-								</Button>
-								<Button>
-									<FontAwesome.FaTwitter size={30} />
-								</Button>
-								<Button>
-									<FontAwesome.FaFacebookSquare size={30} />
-								</Button>
-							</div>
-						</div>
-					</SwipeableDrawer>
-				</div >;
+			<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
+				<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
+					<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90}/></div>
+					<Divider />
+					<div className={SideMenuStyle.list}>
+						<Button className={SideMenuStyle.button}>Perfil</Button>
+						<br />
+						<Button className={SideMenuStyle.button}>Vehículos</Button>
+						<br />
+						<Button className={SideMenuStyle.button}>Info</Button>
+						<br />
+						<Button className={SideMenuStyle.button}>Top Sites</Button>
+					</div>
+					<Divider />
+					<div className={SideMenuStyle.info}>
+						<Button size={'small'}>
+							<FontAwesome.FaGithub size={15} />
+						</Button>
+						<Button size={'small'}>
+							<FontAwesome.FaTwitter size={15} />
+						</Button>
+						<Button size={'small'}>
+							<FontAwesome.FaFacebookSquare size={15} />
+						</Button>
+						<Button size={'small'}>
+							<FontAwesome.FaQuestion size={15} />
+						</Button>
+					</div>
+				</div>
+			</SwipeableDrawer>
+		</div >;
 	}
 }
 

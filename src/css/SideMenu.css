@@ -3,7 +3,7 @@
 }
 
 .button {
-   width: 250px;
+   width: 100%;
 }
    
 .drawer {
@@ -11,20 +11,20 @@
    height: '100%';
 }
 
-.UserIcon {
-   width: 175;
-   height: 175;
-   margin: 'auto';
-   display: 'flex';
-   justify-content: 'center';
-   align-items: 'center';
+.userIcon {
+   width: 175px;
+   height: 175px;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .list {
    width: 250;
-   justify-content: 'center';
-   align-items: 'center';
-   margin: 'auto';
+   justify-content: center;
+   align-items: center;
+   margin: auto;
 }
 
 .info {
@@ -33,6 +33,11 @@
    justify-content: 'center';
    align-items: 'center';
 }
+
+.infoButton{
+    size: 'small';
+}
+
 .drawerButton {
    width: 250px;
    font-family: sans-serif;

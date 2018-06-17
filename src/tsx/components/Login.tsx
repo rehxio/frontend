@@ -8,8 +8,8 @@ export interface LoginProps {
 }
 
 export interface LoginState {
-	name: string;
-	password: string;
+	name?: string;
+	password?: string;
 }
 
 @inject('loginStore')
@@ -32,7 +32,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 	}
 
 	catchUser(event) {
-		this.setState({ [event.target.name]: event.target.value });
+		this.setState({[event.target.name]: event.target.value});
 	}
 
 	sendLogin(event) {
