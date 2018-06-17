@@ -7,20 +7,20 @@ import { LoginStore } from '../stores/LoginStore';
 import { SideMenuStore } from '../stores/SideMenuStore';
 
 export interface HomeProps {
-	loginStore?: LoginStore;
-	sideMenuStore?: SideMenuStore;
+  loginStore?: LoginStore;
+  sideMenuStore?: SideMenuStore;
 }
 
 @inject('loginStore', 'sideMenuStore')
 @observer
 export default class Home extends React.Component<HomeProps, {}> {
-	render() {
-		return (
-			<div>
-				{this.props.sideMenuStore.open && <SideMenu />}
-				<MapContainer />
-				{this.props.loginStore.modalVisible && <Login />}
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        {this.props.sideMenuStore.open && <SideMenu/>}
+        <MapContainer/>
+        {this.props.loginStore.modalVisible && <Login/>}
+      </div>
+    );
+  }
 }

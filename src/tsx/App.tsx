@@ -4,16 +4,18 @@ import Header from './containers/Header';
 import Home from './pages/Home';
 import stores from './stores';
 import { Provider } from 'mobx-react';
+import Vehicles from './pages/Vehicles';
 
 export default class App extends React.Component {
-	render() {
-		return <Provider {...stores}>
-			<Router>
-				<div>
-					<Header />
-					<Route exact path='/' component={Home} />
-				</div>
-			</Router>
-		</Provider>;
-	}
+  render() {
+    return <Provider {...stores}>
+      <Router>
+        <div>
+          <Header/>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/vehicles' component={Vehicles}/>
+        </div>
+      </Router>
+    </Provider>;
+  }
 }
