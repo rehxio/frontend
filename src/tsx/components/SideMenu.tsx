@@ -6,6 +6,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import * as SideMenuStyle from '../../css/Sidemenu.css';
 import * as FontAwesome from 'react-icons/lib/fa';
 import { SideMenuStore } from '../stores/SideMenuStore';
+import { Link } from 'react-router-dom';
 
 export interface SideMenuProps {
 	sideMenuStore?: SideMenuStore;
@@ -22,20 +23,31 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 
 	toggleDrawer() {
 		this.props.sideMenuStore.toggleDrawer();
-		console.log(this.props.sideMenuStore.open);
 	}
 
 	render() {
-		return <div>
-			<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
-				<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
-					<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90}/></div>
-					<Divider />
-					<div className={SideMenuStyle.list}>
-						<Button className={SideMenuStyle.button}>Perfil</Button>
-						<br />
-						<Button className={SideMenuStyle.button}>Vehículos</Button>
+		return (
+			<div>
+				<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
+					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
+						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90}/></div>
+						<Divider />
+						<div className={SideMenuStyle.list}>
+							<Button className={SideMenuStyle.button}>Perfil</Button>
+							<br />
+							<Button className={SideMenuStyle.button}><Link to='/vehicles'>Vehículos</Link></Button>
+						</div>
+						<Divider />
+						<div className={SideMenuStyle.info}>
+							<Button className={SideMenuStyle.infoButton}>
+								<FontAwesome.FaTwitter size={15} />
+							</Button>
+							<Button className={SideMenuStyle.infoButton}>
+								<FontAwesome.FaQuestion size={15} />
+							</Button>
+						</div>
 					</div>
+<<<<<<< HEAD
 					<Divider />
 					<div className={SideMenuStyle.info}>
 						<Button className={SideMenuStyle.infoButton}>
@@ -48,6 +60,11 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 				</div>
 			</SwipeableDrawer>
 		</div >;
+=======
+				</SwipeableDrawer>
+			</div >
+		);
+>>>>>>> d0acee9a9d77a3bfda63d2b1f848660a09434db2
 	}
 }
 

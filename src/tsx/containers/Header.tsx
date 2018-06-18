@@ -6,7 +6,6 @@ import * as FontAwesome from 'react-icons/lib/fa';
 import Button from '@material-ui/core/Button';
 import * as ButtonBar from '../../css/ButtonBar.css';
 
-
 export interface HeaderProps {
 	sideMenuStore?: SideMenuStore;
 	loginStore?: LoginStore;

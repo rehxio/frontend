@@ -24,7 +24,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 		};
 
 		this.toggleLogin = this.toggleLogin.bind(this);
-		this.catchUser = this.catchUser.bind(this);
+		this.onChangeInput = this.onChangeInput.bind(this);
 		this.checkLogin = this.checkLogin.bind(this);
 	}
 
@@ -32,27 +32,33 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 		this.props.loginStore.toggleLogin();
 	}
 
-	catchUser(event) {
-		this.setState({[event.target.name]: event.target.value});
+	onChangeInput(event) {
+		this.setState({ [event.target.name]: event.target.value });
 	}
 
 	checkLogin(event) {
 		event.preventDefault();
-		this.props.loginStore.checkLogin(this.state.name, this.state.password);
+		this.props.loginStore.validateLogin(this.state.name, this.state.password);
 	}
 
 	render() {
 		return <div className={styles.index}>
-					<div className={styles.page}>
-						<div className={styles.login}>
-							<h1>Bienvenido a Where Is Your Car</h1>
-							<form>
-								<p><label>Usuario: </label><input name='name' type='text' value={this.state.name} onChange={this.catchUser} /></p>
-								<p><label>Contraseña: </label><input name='password' type='password' value={this.state.password} onChange={this.catchUser} /></p>
-								<button type='submit' onClick={this.checkLogin}>Iniciar</button>
-							</form>
-						</div>
-					</div>
-				</div>;
+			<div className={styles.page}>
+				<div className={styles.login}>
+					<h1>Bienvenido a Where Is Your Car</h1>
+					<form>
+						<p>
+							<label>Usuario: </label>
+							<input name='name' value={this.state.name} onChange={this.onChangeInput} />
+						</p>
+						<p>
+							<label>Contraseña: </label>
+							<input name='password' type='password' value={this.state.password} onChange={this.onChangeInput} />
+						</p>
+						<button type='submit' onClick={this.checkLogin}>Iniciar</button>
+					</form>
+				</div>
+			</div>
+		</div>;
 	}
 }
