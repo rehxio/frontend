@@ -60,7 +60,7 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 	addParkMarker(lat, lng, id) {
 		const newParkMarkers = this.state.parkMarkers;
 		if (newParkMarkers !== undefined) {
-			newParkMarkers.push({ latitude: lat, longitude: lng , id});
+			newParkMarkers.push({ latitude: lat, longitude: lng , id });
 			this.setState({
 				parkMarkers: newParkMarkers
 			});
@@ -93,10 +93,12 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 					lng: this.state.lng
 				}}
 				onClick={this.onMapClicked}
-
 			>
-				{this.state.ownMarkers.map(marker => <Marker key={marker.id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
-				{this.state.parkMarkers.map(marker => <Marker key={marker.id} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+
+				{this.state.ownMarkers.map(marker => <Marker key={marker.id}
+																			position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+				{this.state.parkMarkers.map(marker => <Marker key={marker.id}
+																			position={{ lat: marker.latitude, lng: marker.longitude }} />)}
 
 			</Map>
 		);

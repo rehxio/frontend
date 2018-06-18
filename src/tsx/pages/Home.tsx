@@ -2,6 +2,7 @@ import * as React from 'react';
 import Login from '../components/Login';
 import SideMenu from '../components/SideMenu';
 import MapContainer from '../components/MapContainer';
+import Vehicles from '../pages/Vehicles';
 import { inject, observer } from 'mobx-react';
 import { LoginStore } from '../stores/LoginStore';
 import { SideMenuStore } from '../stores/SideMenuStore';
