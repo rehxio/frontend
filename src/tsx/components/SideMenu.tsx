@@ -35,24 +35,14 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 						<Button className={SideMenuStyle.button}>Perfil</Button>
 						<br />
 						<Button className={SideMenuStyle.button}>Vehículos</Button>
-						<br />
-						<Button className={SideMenuStyle.button}>Info</Button>
-						<br />
-						<Button className={SideMenuStyle.button}>Top Sites</Button>
 					</div>
 					<Divider />
 					<div className={SideMenuStyle.info}>
-						<Button size={'small'}>
-							<FontAwesome.FaGithub size={15} />
-						</Button>
-						<Button size={'small'}>
+						<Button className={SideMenuStyle.infoButton}>
 							<FontAwesome.FaTwitter size={15} />
 						</Button>
-						<Button size={'small'}>
-							<FontAwesome.FaFacebookSquare size={15} />
-						</Button>
-						<Button size={'small'}>
-							<FontAwesome.FaQuestion size={15} />
+						<Button className={SideMenuStyle.infoButton}>
+							<FontAwesome.Faquais size={15} />
 						</Button>
 					</div>
 				</div>

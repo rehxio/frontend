@@ -2,7 +2,7 @@ import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
 
 export class LoginStore {
-	@observable modalVisible = true;
+	@observable modalVisible = false; // esto va a true
 	@action toggleLogin() {
 		this.modalVisible = !this.modalVisible;
 	}
