@@ -11,7 +11,11 @@
    height: '100%';
 }
 
+<<<<<<< HEAD
 .userIcon {
+=======
+.UserIcon {
+>>>>>>> e1dab86ddac06c9269c5ff585ceb30390c1cde9d
    width: 175px;
    height: 175px;
    margin: auto;
@@ -21,17 +25,21 @@
 }
 
 .list {
+<<<<<<< HEAD
    width: 250;
+=======
+   width: 250px;
+>>>>>>> e1dab86ddac06c9269c5ff585ceb30390c1cde9d
    justify-content: center;
    align-items: center;
    margin: auto;
 }
 
 .info {
-   display: 'flex';
-   margin: 'auto';
-   justify-content: 'center';
-   align-items: 'center';
+   display: flex;
+   margin: auto;
+   justify-content: center;
+   align-items: center;
 }
 
 .infoButton{
@@ -49,8 +57,8 @@
 }
 
 .topStuff {
- display: flex;
- flex-direction: row;
+   display: flex;
+   flex-direction: row;
 }
 
 

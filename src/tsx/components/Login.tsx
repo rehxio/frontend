@@ -25,6 +25,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 
 		this.toggleLogin = this.toggleLogin.bind(this);
 		this.catchUser = this.catchUser.bind(this);
+		this.checkLogin = this.checkLogin.bind(this);
 	}
 
 	toggleLogin() {
@@ -35,13 +36,9 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 		this.setState({[event.target.name]: event.target.value});
 	}
 
-	sendLogin(event) {
+	checkLogin(event) {
 		event.preventDefault();
-		alert(`Iniciando sesión con: ${JSON.stringify(this.state.name)}`);
-	}
-
-	checkLogin() {
-		this.props.loginStore.checkLogin();
+		this.props.loginStore.checkLogin(this.state.name, this.state.password);
 	}
 
 	render() {
@@ -50,7 +47,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
 						<div className={styles.login}>
 							<h1>Bienvenido a Where Is Your Car</h1>
 							<form>
-								<p><label>Usuario: </label><input name='user' value={this.state.name} onChange={this.catchUser} /></p>
+								<p><label>Usuario: </label><input name='name' type='text' value={this.state.name} onChange={this.catchUser} /></p>
 								<p><label>Contraseña: </label><input name='password' type='password' value={this.state.password} onChange={this.catchUser} /></p>
 								<button type='submit' onClick={this.checkLogin}>Iniciar</button>
 							</form>

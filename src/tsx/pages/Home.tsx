@@ -15,12 +15,13 @@ export interface HomeProps {
 @observer
 export default class Home extends React.Component<HomeProps, {}> {
 	render() {
-		return (
-			<div>
-				{this.props.sideMenuStore.open && <SideMenu />}
-				<MapContainer />
-				{this.props.loginStore.modalVisible && <Login />}
-			</div>
-		);
+		if (this.props.loginStore.modalVisible) {
+			return  <Login />;
+		} else {
+			return <div>
+			{this.props.sideMenuStore.open && <SideMenu />}
+			<MapContainer />
+		</div>;
+		}
 	}
 }

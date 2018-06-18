@@ -5,7 +5,7 @@ html, body {
 .page {
    display: flex;
    width: 100vw;
-   height: 93vh;
+   height: 98.3vh;
    background-color: RGBA(220, 220, 220, 0.5);
    justify-content: center;
    align-items: center;
@@ -16,8 +16,4 @@ html, body {
    background: white;
    width: 30em;
    height: 15em;
-}
-
-.index {
-   z-index: 3;
 }
