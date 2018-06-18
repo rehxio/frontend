@@ -9,6 +9,7 @@ import * as superagent from 'superagent';
 export const USER_TOKEN = 'USER_TOKEN';
 
 export class LoginStore {
+
 	@observable userToken: string;
 	@observable modalVisible = true;
 

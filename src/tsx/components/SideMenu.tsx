@@ -30,23 +30,20 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 			<div>
 				<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
 					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
-						<div className={SideMenuStyle.UserIcon}><FontAwesome.FaUser size={90} /></div>
+						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90}/></div>
 						<Divider />
 						<div className={SideMenuStyle.list}>
 							<Button className={SideMenuStyle.button}>Perfil</Button>
 							<br />
-							<Link to='/vehicles'><Button className={SideMenuStyle.button}>Vehículos</Button></Link>
+							<Button className={SideMenuStyle.button}><Link to='/vehicles'>Vehículos</Link></Button>
 						</div>
 						<Divider />
 						<div className={SideMenuStyle.info}>
-							<Button>
-								<FontAwesome.FaGithub size={30} />
+							<Button className={SideMenuStyle.infoButton}>
+								<FontAwesome.FaTwitter size={15} />
 							</Button>
-							<Button>
-								<FontAwesome.FaTwitter size={30} />
-							</Button>
-							<Button>
-								<FontAwesome.FaFacebookSquare size={30} />
+							<Button className={SideMenuStyle.infoButton}>
+								<FontAwesome.FaQuestion size={15} />
 							</Button>
 						</div>
 					</div>

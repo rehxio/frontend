@@ -3,15 +3,22 @@
 }
 
 .button {
-   width: 250px;
+   width: 100%;
+}
+
+Button.button:hover {
+    transform: translate(3px, -4px);
+    background: rgb(93, 109, 114);
+    box-shadow: -3px 4px 5px black;
+    transition: all .7s ease;
 }
    
 .drawer {
-   background: 'antiquewhite';
-   height: '100%';
+   background: lightblue;
+   height: 100%;
 }
 
-.UserIcon {
+.userIcon {
    width: 175px;
    height: 175px;
    margin: auto;
@@ -30,9 +37,15 @@
 .info {
    display: flex;
    margin: auto;
+   height: 62%;
    justify-content: center;
-   align-items: center;
+   align-items: flex-end;
 }
+
+.infoButton {
+    font-size: 15px;
+}
+
 .drawerButton {
    width: 250px;
    font-family: sans-serif;
