@@ -42,7 +42,7 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 							<FontAwesome.FaTwitter size={15} />
 						</Button>
 						<Button className={SideMenuStyle.infoButton}>
-							<FontAwesome.Faquais size={15} />
+							<FontAwesome.FaQuestion size={15} />
 						</Button>
 					</div>
 				</div>
