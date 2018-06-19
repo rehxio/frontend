@@ -34,7 +34,7 @@ export default class Header extends React.Component<HeaderProps, {}> {
 								<button className={ButtonBar.funcButton}><span>Park</span></button>
 								<button className={ButtonBar.funcButton}><span>Move</span></button>
 								<button className={ButtonBar.funcButton}><span>Where did I park?</span></button>
-								<button className={ButtonBar.should}><span>Where should I park?</span></button>
+								<button className={ButtonBar.should} style={{background: 'grey'}}><span>Where should I park?</span></button>
 							</div>
 					</nav>
 				</div>;

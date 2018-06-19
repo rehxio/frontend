@@ -7,10 +7,10 @@
 }
 
 Button.button:hover {
-    transform: translate(3px, -4px);
+    transform: translate(1.5px, 2px);
     background: rgb(93, 109, 114);
-    box-shadow: -3px 4px 5px black;
-    transition: all .7s ease;
+    box-shadow: -1.5px 2x 2px black;
+    transition: all .5s ease;
 }
    
 .drawer {
