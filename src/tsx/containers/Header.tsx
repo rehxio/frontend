@@ -31,10 +31,10 @@ export default class Header extends React.Component<HeaderProps, {}> {
 					<nav className={ButtonBar.menuButton}>
 						<Button onClick={this.toggleDrawer}><FontAwesome.FaBars size={30} /></Button>
 							<div className={ButtonBar.topButton}>
-								<button className={ButtonBar.funcButton}><span>Park</span></button>
-								<button className={ButtonBar.funcButton}><span>Move</span></button>
-								<button className={ButtonBar.funcButton}><span>Where did I park?</span></button>
-								<button className={ButtonBar.should}><span>Where should I park?</span></button>
+								<button className={ButtonBar.funcButton}><span>Aparcar</span></button>
+								<button className={ButtonBar.funcButton}><span>Salir</span></button>
+								<button className={ButtonBar.funcButton}><span>¿Donde aparqué?</span></button>
+								<button className={ButtonBar.should}><span>¿Donde debería aparcar?</span></button>
 							</div>
 					</nav>
 				</div>;

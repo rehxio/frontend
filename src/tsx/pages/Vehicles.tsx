@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import Button from '@material-ui/core/Button';
 import { VehicleStore } from '../stores/VehicleStore';
 import { SideMenuStore } from '../stores/SideMenuStore';
 import SideMenu from '../components/SideMenu';
+import NewVehicle from '../components/NewVehicle';
 import * as VehicleStyle from '../../css/Vehicles.css';
-import Button from '@material-ui/core/Button';
+
 
 export interface VehiclesProps {
 	vehicleStore?: VehicleStore;
@@ -38,16 +40,17 @@ export default class Vehicles extends React.Component<VehiclesProps, {}> {
 		const { vehicles } = this.props.vehicleStore;
 		return <div>
 			{this.props.sideMenuStore.open && <SideMenu />}
+			{this.props.vehicleStore.open && <NewVehicle />}
 			<div>
 				<div className={VehicleStyle.title}>
 					<h1>Mis vehículos</h1>
 				</div>
 				<div className={VehicleStyle.containerbuttons}>
 					<div className={VehicleStyle.containeradd}>
-						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.newVehicle}>Add Vehicle</Button>
+						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.newVehicle}>Añadir Vehículo</Button>
 					</div>
 					<div className={VehicleStyle.containerremove}>
-						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.removeVehicle}>Remove Vehicle</Button>
+						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.removeVehicle}>Eliminar Vehículo</Button>
 					</div>
 				</div>
 			</div>

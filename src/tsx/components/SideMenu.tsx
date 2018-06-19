@@ -7,6 +7,7 @@ import * as SideMenuStyle from '../../css/Sidemenu.css';
 import * as FontAwesome from 'react-icons/lib/fa';
 import { SideMenuStore } from '../stores/SideMenuStore';
 import { Link } from 'react-router-dom';
+import Icon from '@material-ui/core/Icon';
 
 export interface SideMenuProps {
 	sideMenuStore?: SideMenuStore;
@@ -30,7 +31,13 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 			<div>
 				<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
 					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
-						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90}/></div>
+						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90} /></div>
+						<Divider />
+						<Button variant='contained' className={SideMenuStyle.button}>
+							<Link to='/'>
+								<FontAwesome.FaHome size={25} /> Home
+							</Link>
+						</Button>
 						<Divider />
 						<div className={SideMenuStyle.list}>
 							<Button className={SideMenuStyle.button}>Perfil</Button>

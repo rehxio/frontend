@@ -9,24 +9,24 @@ body {
 }
 
 .button {
-   width: 98.5%;
+   width: 98%;
 }
 
 Button {
-    height: 4em;
-    
+    height: 4em;  
 }
-
+/*
 Button.button:hover {
     transform: translate(3px, -4px);
     background: rgb(93, 109, 114);
     box-shadow: -3px 4px 5px black;
     transition: all .7s ease;
 }
-   
+ */  
 .drawer {
    background: lightblue;
    height: 100%;
+   text-align: center;
 }
 
 .userIcon {
@@ -48,7 +48,7 @@ Button.button:hover {
 .info {
    display: flex;
    margin: auto;
-   height: 69vh;
+   height: 63vh;
    justify-content: center;
    align-items: flex-end;
 }
