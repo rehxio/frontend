@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .menuButton {
 	display: flex;
@@ -21,6 +22,7 @@
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
+	font-family: 'Roboto', sans-serif;
 }
 
 .funcButton span {

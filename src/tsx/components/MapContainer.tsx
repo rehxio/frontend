@@ -24,8 +24,8 @@ export interface MapContainerState {
 }
 
 const style = {
-	width: '100%',
-	height: '90%',
+	width: '98.99vw',
+	height: '91.4vh',
 };
 
 class MapContainer extends React.Component<MapContainerProps, MapContainerState> {

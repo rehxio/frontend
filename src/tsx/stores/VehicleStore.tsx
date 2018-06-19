@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, observable, remove } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
 
@@ -25,5 +25,9 @@ export class VehicleStore {
 				this.loadVehicles();
 			})
 			.catch(err => console.error('No se han podido obtener los vehículos', err));
+	}
+
+	// TODO hacer la función remove
+	@action remove(identifier: string) {
 	}
 }

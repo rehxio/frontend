@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+   font-family: 'Roboto', sans-serif;
+}
+
 .SwipeableDrawer {
    background: grey;
 }
 
 .button {
-   width: 100%;
+   width: 98.5%;
+}
+
+Button {
+    height: 4em;
+    
 }
 
 Button.button:hover {
@@ -37,13 +48,14 @@ Button.button:hover {
 .info {
    display: flex;
    margin: auto;
-   height: 62%;
+   height: 69vh;
    justify-content: center;
    align-items: flex-end;
 }
 
 .infoButton {
     font-size: 15px;
+    align-items: flex-end;
 }
 
 .drawerButton {
