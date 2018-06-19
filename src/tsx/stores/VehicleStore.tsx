@@ -1,9 +1,13 @@
-import { action, observable } from 'mobx';
+import { action, observable, remove } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
 
 export class VehicleStore {
 	@observable vehicles = [];
+	@observable open = false;
+	@action openNewVehicle() {
+		this.open = !this.open;
+	}
 
 	@action loadVehicles() {
 		const token = window.localStorage.getItem(USER_TOKEN);
@@ -24,6 +28,10 @@ export class VehicleStore {
 				console.log('New vehicle', response, identifier);
 				this.loadVehicles();
 			})
-			.catch(err => console.error('No se han podido obtener los vehículos', err));
+			.catch(err => console.error('No se ha podido añadir el vehículo', err));
+	}
+
+	// TODO hacer la función remove
+	@action remove(identifier: string) {
 	}
 }

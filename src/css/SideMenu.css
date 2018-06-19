@@ -1,21 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+   font-family: 'Roboto', sans-serif;
+}
+
 .SwipeableDrawer {
    background: grey;
 }
 
 .button {
-   width: 100%;
+   width: 98%;
 }
 
+Button {
+    height: 4em;  
+}
+/*
 Button.button:hover {
     transform: translate(1.5px, 2px);
     background: rgb(93, 109, 114);
     box-shadow: -1.5px 2x 2px black;
     transition: all .5s ease;
 }
-   
+ */  
 .drawer {
    background: lightblue;
    height: 100%;
+   text-align: center;
 }
 
 .userIcon {
@@ -37,13 +48,14 @@ Button.button:hover {
 .info {
    display: flex;
    margin: auto;
-   height: 62%;
+   height: 63vh;
    justify-content: center;
    align-items: flex-end;
 }
 
 .infoButton {
     font-size: 15px;
+    align-items: flex-end;
 }
 
 .drawerButton {
