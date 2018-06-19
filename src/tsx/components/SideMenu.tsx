@@ -54,9 +54,24 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 							</Button>
 						</div>
 					</div>
+<<<<<<< HEAD
+					<Divider />
+					<div className={SideMenuStyle.info}>
+						<Button className={SideMenuStyle.infoButton}>
+							<FontAwesome.FaTwitter size={15} />
+						</Button>
+						<Button className={SideMenuStyle.infoButton}>
+							<FontAwesome.FaQuestion size={15} />
+						</Button>
+					</div>
+				</div>
+			</SwipeableDrawer>
+		</div >;
+=======
 				</SwipeableDrawer>
 			</div >
 		);
+>>>>>>> d0acee9a9d77a3bfda63d2b1f848660a09434db2
 	}
 }
 
