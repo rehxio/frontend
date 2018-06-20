@@ -1,12 +1,13 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React = require('react');
 import * as keys from '../../../config/pass';
+import { MapStore } from '../stores/MapStore';
+import { observer, inject } from 'mobx-react';
 
 export interface MapContainerProps {
 	google: any;
-	lat?: any;
-	lng?: any;
 	zoom?: any;
+	mapStore?: MapStore;
 }
 
 export interface MarkersState {
@@ -18,8 +19,6 @@ export interface MarkersState {
 export interface MapContainerState {
 	ownMarkers?: MarkersState[];
 	parkMarkers?: MarkersState[];
-	lat?: any;
-	lng?: any;
 	zoom?: any;
 }
 
@@ -28,13 +27,13 @@ const style = {
 	height: '91.4vh',
 };
 
+@inject('mapStore')
+@observer
 class MapContainer extends React.Component<MapContainerProps, MapContainerState> {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			lat: this.props.lat,
-			lng: this.props.lng,
 			zoom: this.props.zoom,
 			ownMarkers: [],
 			parkMarkers: []
@@ -42,25 +41,11 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 	}
 
 
-	onMapClicked = () => {
-		console.log(this.state.lat);
-	}
 
-	getLocation() {
-		return navigator.geolocation.getCurrentPosition(position => {
-			this.setState({
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			});
-			this.addCurrentMarker(this.state.lat, this.state.lng, '0');
-		});
-	}
-
-
-	addParkMarker(lat, lng, id) {
+	addParkMarker(this.props.mapStore.lat, this.props.mapStore.lng, id) {
 		const newParkMarkers = this.state.parkMarkers;
 		if (newParkMarkers !== undefined) {
-			newParkMarkers.push({ latitude: lat, longitude: lng , id });
+			newParkMarkers.push({ latitude: lat, longitude: lng, id });
 			this.setState({
 				parkMarkers: newParkMarkers
 			});
@@ -71,16 +56,11 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 	addCurrentMarker(lat, lng, id) {
 		const newOwnMarkers = this.state.ownMarkers;
 		if (newOwnMarkers !== undefined) {
-			newOwnMarkers.push({ latitude: lat, longitude: lng, id});
+			newOwnMarkers.push({ latitude: lat, longitude: lng, id });
 			this.setState({
 				ownMarkers: newOwnMarkers
 			});
 		}
-	}
-
-
-	componentDidMount() {
-		this.getLocation();
 	}
 
 
@@ -89,16 +69,16 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 			<Map google={this.props.google}
 				style={style}
 				center={{
-					lat: this.state.lat,
-					lng: this.state.lng
+					lat: this.props.mapStore.lat,
+					lng: this.props.mapStore.lng
 				}}
-				onClick={this.onMapClicked}
+				onClick={'this.onMapClicked'}
 			>
 
 				{this.state.ownMarkers.map(marker => <Marker key={marker.id}
-																			position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+					position={{ lat: marker.latitude, lng: marker.longitude }} />)}
 				{this.state.parkMarkers.map(marker => <Marker key={marker.id}
-																			position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+					position={{ lat: marker.latitude, lng: marker.longitude }} />)}
 
 			</Map>
 		);

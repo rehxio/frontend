@@ -11,7 +11,7 @@ export const USER_TOKEN = 'USER_TOKEN';
 export class LoginStore {
 
 	@observable userToken: string;
-	@observable modalVisible = false;
+	@observable modalVisible = true; // pregunta a Raul
 
 	constructor() {
 		this.userToken = window.localStorage.getItem(USER_TOKEN);
