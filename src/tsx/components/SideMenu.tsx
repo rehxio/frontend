@@ -40,7 +40,7 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 						</Link>
 						<Divider />
 						<div className={SideMenuStyle.list}>
-							<Button className={SideMenuStyle.button}>Perfil</Button>
+							<Button className={SideMenuStyle.button}><Link to='/Profile'>Perfil</Link></Button>
 							<br />
 							<Link to='/vehicles'><Button className={SideMenuStyle.button}>Vehículos</Button></Link>
 						</div>
