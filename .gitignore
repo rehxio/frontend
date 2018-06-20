@@ -17,6 +17,7 @@
 *.sql
 *.sqlite
 *.vscode
+.env
 
 #Archivos
 .DS_Store

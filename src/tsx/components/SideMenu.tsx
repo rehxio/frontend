@@ -33,16 +33,16 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
 						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90} /></div>
 						<Divider />
-						<Button variant='contained' className={SideMenuStyle.button}>
-							<Link to='/'>
+						<Link to='/'>
+							<Button variant='contained' className={SideMenuStyle.button}>
 								<FontAwesome.FaHome size={25} /> Home
-							</Link>
-						</Button>
+							</Button>
+						</Link>
 						<Divider />
 						<div className={SideMenuStyle.list}>
 							<Button className={SideMenuStyle.button}>Perfil</Button>
 							<br />
-							<Button className={SideMenuStyle.button}><Link to='/vehicles'>Vehículos</Link></Button>
+							<Link to='/vehicles'><Button className={SideMenuStyle.button}>Vehículos</Button></Link>
 						</div>
 						<Divider />
 						<div className={SideMenuStyle.info}>
@@ -54,24 +54,9 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 							</Button>
 						</div>
 					</div>
-<<<<<<< HEAD
-					<Divider />
-					<div className={SideMenuStyle.info}>
-						<Button className={SideMenuStyle.infoButton}>
-							<FontAwesome.FaTwitter size={15} />
-						</Button>
-						<Button className={SideMenuStyle.infoButton}>
-							<FontAwesome.FaQuestion size={15} />
-						</Button>
-					</div>
-				</div>
-			</SwipeableDrawer>
-		</div >;
-=======
 				</SwipeableDrawer>
 			</div >
 		);
->>>>>>> d0acee9a9d77a3bfda63d2b1f848660a09434db2
 	}
 }
 
