@@ -1,6 +1,5 @@
 import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
-require('dotenv').config();
 
 /**
  * Esta es la constante en la que guardaremos los datos de sesión del usuario en las cookies (localstorage)

@@ -8,7 +8,6 @@ export class MapStore {
 	@observable lat: number;
 	@observable lng: number;
 
-
 	@action geolocation() {
 		navigator.geolocation.getCurrentPosition(position => {
 			this.lat = position.coords.latitude;

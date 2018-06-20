@@ -42,10 +42,10 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 
 
 
-	addParkMarker(this.props.mapStore.lat, this.props.mapStore.lng, id) {
+	addParkMarker(id) {
 		const newParkMarkers = this.state.parkMarkers;
 		if (newParkMarkers !== undefined) {
-			newParkMarkers.push({ latitude: lat, longitude: lng, id });
+			newParkMarkers.push({ latitude: this.props.mapStore.lat, longitude: this.props.mapStore.lng, id });
 			this.setState({
 				parkMarkers: newParkMarkers
 			});
@@ -86,5 +86,5 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 }
 
 export default GoogleApiWrapper({
-	apiKey: process.env.APIKEY
+	apiKey: keys.apikey
 })(MapContainer);

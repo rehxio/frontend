@@ -48,7 +48,7 @@ Button.button:hover {
 .info {
    display: flex;
    margin: auto;
-   height: 47.5vh;
+   height: 63%;
    justify-content: center;
    align-items: flex-end;
 }
