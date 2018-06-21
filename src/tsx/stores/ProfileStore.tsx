@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
+import * as ENV from '../../../config/env';
 
 export class ProfileStore {
 
@@ -9,7 +10,7 @@ export class ProfileStore {
 	@action loadProfile() {
 		const token = window.localStorage.getItem(USER_TOKEN);
 		superagent
-			.get('http://127.0.0.1:3000/user/profile')
+			.get(`${ENV.API}/user/profile`)
 			.set('Authorization', `Bearer ${token}`)
 			.then(response => {
 				this.profile = response.name;

@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx';
 import { strictEqual } from 'assert';
 import * as superagent from 'superagent';
+import * as ENV from '../../../config/env';
 
 export class SideMenuStore {
 	@observable open = false;
@@ -12,7 +13,7 @@ export class SideMenuStore {
 
 	@action setName() {
 		superagent
-			.get('http://127.0.0.1:3000/user/profile')
+			.get(`${ENV.API}/user/profile`)
 			.set()
 			.then(response => {
 				this.userName = response.name;

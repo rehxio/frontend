@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
+import * as ENV from '../../../config/env';
 
 /**
  * Esta es la constante en la que guardaremos los datos de sesión del usuario en las cookies (localstorage)
@@ -32,7 +33,7 @@ export class LoginStore {
 
 	@action validateLogin(name: string, password: string) {
 		superagent
-			.post(`${process.env.API_HOST}/user/login`)
+			.post(`${ENV.API}/user/login`)
 			.send({ name, password })
 			.then(response => this.setUserToken(response.body.token))
 			.catch(err => {

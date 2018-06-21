@@ -1,6 +1,6 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React = require('react');
-import * as keys from '../../../config/pass';
+import * as ENV from '../../../config/env';
 import { MapStore } from '../stores/MapStore';
 import { observer, inject } from 'mobx-react';
 
@@ -25,6 +25,7 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 
 
 	componentDidMount() {
+		this.props.mapStore.geolocation();
 	}
 
 
@@ -32,10 +33,6 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 		return (
 			<Map google={this.props.google}
 				style={style}
-				initialCenter={{
-					lat: 28.1235459,
-					lng: -15.436257399999931
-				}}
 				center={{
 					lat: this.props.mapStore.lat,
 					lng: this.props.mapStore.lng
@@ -44,8 +41,13 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 				onClick={'this.onMapClicked'}
 			>
 
-				{this.props.mapStore.markers.map(marker => <Marker key={marker.id}
-					position={{ lat: marker.lat, lng: marker.lng }} />)}
+				<Marker
+				key={this.props.mapStore.markers.id}
+				position={{
+					lat: this.props.mapStore.markers.lat,
+					lng: this.props.mapStore.markers.lng
+				}}
+				/>
 				{this.props.mapStore.parkMarkers.map(marker => <Marker key={marker.id}
 					position={{ lat: marker.lat, lng: marker.lng }} />)}
 
@@ -55,5 +57,5 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 }
 
 export default GoogleApiWrapper({
-	apiKey: keys.apikey
+	apiKey: ENV.APIKEY
 })(MapContainer);

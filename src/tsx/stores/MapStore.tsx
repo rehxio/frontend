@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
-import { reportObserved } from 'mobx/lib/core/observable';
+import * as ENV from '../../../config/env';
 
 export class MapStore {
 
@@ -10,11 +10,11 @@ export class MapStore {
 	@observable lng: number;
 	@observable zoom: number;
 
-	@observable markers: [{
+	@observable markers: {
 		lat: number,
 		lng: number,
 		id: string
-	}];
+	};
 
 	@observable parkMarkers: [{
 		lat: number,
@@ -24,11 +24,11 @@ export class MapStore {
 
 	constructor() {
 		this.zoom = 8;
-		this.markers = [{
+		this.markers = {
 			lat: 0,
 			lng: 0,
 			id: '0'
-		}];
+		};
 		this.parkMarkers = [{
 			lat: 0,
 			lng: 0,
@@ -38,7 +38,9 @@ export class MapStore {
 
 	addCurrentMarker(lat, lng, id) {
 		if (this.markers !== undefined) {
-			this.markers.push({ lat, lng, id });
+			this.markers = {
+				lat, lng, id
+			};
 		}
 		console.log(this.markers);
 	}
@@ -56,8 +58,11 @@ export class MapStore {
 			this.zoom = 14;
 			this.addCurrentMarker(this.lat, this.lng, '0'); // FIXME arreglar id
 		});
+	}
+
+	@action parked() {
 		superagent
-			.post('http://127.0.0.1:3000/park')
+			.post(`${ENV.API}/vehicle/park`)
 			.send(this.lat, this.lng)
 			.then(alert('Ubicación guardada'))
 			.catch(err => alert('No se ha podido determinar la ubicación'));
@@ -65,11 +70,8 @@ export class MapStore {
 
 
 	@action setOffLocation() {
-		this.lat = 28.1235459;
-		this.lng = -15.436257399999931;
-		this.zoom = 8;
 		superagent
-			.post('http://127.0.0.1:3000/offpark')
+			.post(`${ENV.API}/vehicle/offpark`)
 			.send()
 			.then(response => response) // FIXME
 			.catch(err => alert('no se ha podido desacivar la localizacion'));
@@ -77,7 +79,7 @@ export class MapStore {
 
 	@action parkRemainder() {
 		superagent
-			.get('http://127.0.0.1:3000/mypark')
+			.get(`${ENV.API}/vehicle/mypark`)
 			.set()
 			.then(response => {
 				this.lat = response.body.lat;
@@ -88,7 +90,7 @@ export class MapStore {
 
 	@action parkSuggestion() {
 		superagent
-			.get('http://127.0.0.1:3000/mysuggestions')
+			.get(`${ENV.API}/vehicle/mysuggestions`)
 			.set()
 			.then(response => {
 				response.map(coords => this.addParkMarkers(coords.lat, coords.lng, '0')); // FIXME areglar id
