@@ -1,5 +1,4 @@
 import { action, observable } from 'mobx';
-import { strictEqual } from 'assert';
 import * as superagent from 'superagent';
 import * as ENV from '../../../config/env';
 

@@ -12,7 +12,7 @@ export const USER_TOKEN = 'USER_TOKEN';
 export class LoginStore {
 
 	@observable userToken: string;
-	@observable modalVisible = true; // pregunta a Raul
+	@observable modalVisible = true;
 
 	constructor() {
 		this.userToken = window.localStorage.getItem(USER_TOKEN);

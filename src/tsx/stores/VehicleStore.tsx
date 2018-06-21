@@ -1,6 +1,7 @@
 import { action, observable, remove } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
+import * as ENV from '../../../config/env';
 
 export class VehicleStore {
 	@observable vehicles = [];
@@ -11,7 +12,7 @@ export class VehicleStore {
 
 	@action loadVehicles() {
 		const token = window.localStorage.getItem(USER_TOKEN);
-		superagent.get('http://127.0.0.1:3000/vehicle/all')
+		superagent.get(`${ENV.API}/vehicle/all`)
 			.set('Authorization', `Bearer ${token}`)
 			.then(response => {
 				this.vehicles = response.body;
@@ -21,7 +22,7 @@ export class VehicleStore {
 
 	@action newVehicle(identifier: string) {
 		const token = window.localStorage.getItem(USER_TOKEN);
-		superagent.post('http://127.0.0.1:3000/vehicle/add')
+		superagent.post(`${ENV.API}/vehicle/add`)
 			.set('Authorization', `Bearer ${token}`)
 			.send({ identifier })
 			.then(response => {

@@ -23,11 +23,9 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 		super(props);
 	}
 
-
 	componentDidMount() {
 		this.props.mapStore.geolocation();
 	}
-
 
 	render() {
 		return (
@@ -38,16 +36,11 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 					lng: this.props.mapStore.lng
 				}}
 				zoom={this.props.mapStore.zoom}
-				onClick={'this.onMapClicked'}
 			>
 
-				<Marker
-				key={this.props.mapStore.markers.id}
-				position={{
-					lat: this.props.mapStore.markers.lat,
-					lng: this.props.mapStore.markers.lng
-				}}
-				/>
+				<Marker key={this.props.mapStore.markers.id}	position={{ lat: this.props.mapStore.markers.lat, lng: this.props.mapStore.markers.lng }} />
+
+
 				{this.props.mapStore.parkMarkers.map(marker => <Marker key={marker.id}
 					position={{ lat: marker.lat, lng: marker.lng }} />)}
 

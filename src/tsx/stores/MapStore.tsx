@@ -38,9 +38,7 @@ export class MapStore {
 
 	addCurrentMarker(lat, lng, id) {
 		if (this.markers !== undefined) {
-			this.markers = {
-				lat, lng, id
-			};
+			this.markers = { lat, lng, id };
 		}
 		console.log(this.markers);
 	}
@@ -62,10 +60,10 @@ export class MapStore {
 
 	@action parked() {
 		superagent
-			.post(`${ENV.API}/vehicle/park`)
-			.send(this.lat, this.lng)
-			.then(alert('Ubicación guardada'))
-			.catch(err => alert('No se ha podido determinar la ubicación'));
+		.post(`${ENV.API}/vehicle/park`)
+		.send(this.lat, this.lng)
+		.then(alert('Ubicación guardada'))
+		.catch(err => alert('No se ha podido determinar la ubicación'));
 	}
 
 
