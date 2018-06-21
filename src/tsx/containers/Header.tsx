@@ -31,7 +31,7 @@ export default class Header extends React.Component<HeaderProps, {}> {
 	}
 
 	updateLocation() {
-		this.props.mapStore.geolocation();
+		this.props.mapStore.parked();
 	}
 
 	moveUpdate() {

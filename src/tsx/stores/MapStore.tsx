@@ -10,11 +10,11 @@ export class MapStore {
 	@observable lng: number;
 	@observable zoom: number;
 
-	@observable markers: [{
+	@observable markers: {
 		lat: number,
 		lng: number,
 		id: string
-	}];
+	};
 
 	@observable parkMarkers: [{
 		lat: number,
@@ -24,11 +24,11 @@ export class MapStore {
 
 	constructor() {
 		this.zoom = 8;
-		this.markers = [{
+		this.markers = {
 			lat: 0,
 			lng: 0,
 			id: '0'
-		}];
+		};
 		this.parkMarkers = [{
 			lat: 0,
 			lng: 0,
@@ -38,7 +38,7 @@ export class MapStore {
 
 	addCurrentMarker(lat, lng, id) {
 		if (this.markers !== undefined) {
-			this.markers.push({ lat, lng, id });
+			this.markers = { lat, lng, id };
 		}
 		console.log(this.markers);
 	}
@@ -56,18 +56,18 @@ export class MapStore {
 			this.zoom = 14;
 			this.addCurrentMarker(this.lat, this.lng, '0'); // FIXME arreglar id
 		});
+	}
+
+	@action parked() {
 		superagent
-			.post(`${ENV.API}/vehicle/park`)
-			.send(this.lat, this.lng)
-			.then(alert('Ubicación guardada'))
-			.catch(err => alert('No se ha podido determinar la ubicación'));
+		.post(`${ENV.API}/vehicle/park`)
+		.send(this.lat, this.lng)
+		.then(alert('Ubicación guardada'))
+		.catch(err => alert('No se ha podido determinar la ubicación'));
 	}
 
 
 	@action setOffLocation() {
-		this.lat = 28.1235459;
-		this.lng = -15.436257399999931;
-		this.zoom = 8;
 		superagent
 			.post(`${ENV.API}/vehicle/offpark`)
 			.send()

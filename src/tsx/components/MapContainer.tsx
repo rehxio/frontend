@@ -24,30 +24,23 @@ class MapContainer extends React.Component<MapContainerProps, {}> {
 	}
 
 	componentDidMount() {
-		navigator.geolocation.getCurrentPosition(position => {
-			this.props.mapStore.lat = position.coords.latitude;
-			this.props.mapStore.lng = position.coords.longitude;
-		});
+		this.props.mapStore.geolocation();
 	}
 
 	render() {
 		return (
 			<Map google={this.props.google}
 				style={style}
-				initialCenter={{
-					lat: 28.1235459,
-					lng: -15.436257399999931
-				}}
 				center={{
 					lat: this.props.mapStore.lat,
 					lng: this.props.mapStore.lng
 				}}
 				zoom={this.props.mapStore.zoom}
-				onClick={'this.onMapClicked'}
 			>
 
-				{this.props.mapStore.markers.map(marker => <Marker key={marker.id}
-					position={{ lat: marker.lat, lng: marker.lng }} />)}
+				<Marker key={this.props.mapStore.markers.id}	position={{ lat: this.props.mapStore.markers.lat, lng: this.props.mapStore.markers.lng }} />
+
+
 				{this.props.mapStore.parkMarkers.map(marker => <Marker key={marker.id}
 					position={{ lat: marker.lat, lng: marker.lng }} />)}
 
