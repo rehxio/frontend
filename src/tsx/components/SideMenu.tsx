@@ -44,18 +44,18 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 						</Link>
 						<Divider />
 						<div className={SideMenuStyle.list}>
-						<Link to='/Profile'><Button className={SideMenuStyle.button}>Perfil</Button></Link>
+							<Link to='/Profile'><Button className={SideMenuStyle.button}>Perfil</Button></Link>
 							<br />
 							<Link to='/vehicles'><Button className={SideMenuStyle.button}>Vehículos</Button></Link>
 						</div>
 						<Divider />
 						<div className={SideMenuStyle.info}>
-								<a target='_blank' href='https://twitter.com/car_where'><FontAwesome.FaTwitter size={15} />
-								<Button className={SideMenuStyle.infoButton}></Button>
-								</a>
-								<Link to='/info'><FontAwesome.FaQuestion size={15} />
-									<Button className={SideMenuStyle.infoButton} type='button'></Button>
-								</Link>
+							<Button className={SideMenuStyle.infoButton}>
+								<a target='_blank' href='https://twitter.com/car_where'><FontAwesome.FaTwitter size={15} /></a>
+							</Button>
+							<Link to='/info'>
+								<Button className={SideMenuStyle.infoButton} type='button'><FontAwesome.FaQuestion size={15} /></Button>
+							</Link>
 						</div>
 					</div>
 				</SwipeableDrawer>
