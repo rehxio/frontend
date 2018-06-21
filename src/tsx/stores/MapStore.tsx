@@ -49,7 +49,6 @@ export class MapStore {
 		}
 	}
 
-
 	@action geolocation() {
 		navigator.geolocation.getCurrentPosition(position => {
 			this.lat = position.coords.latitude;

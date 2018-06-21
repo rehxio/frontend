@@ -37,16 +37,16 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
 						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={20} />{this.props.sideMenuStore.userName}</div>
 						<Divider />
-						<Button variant='contained' className={SideMenuStyle.button}>
-							<Link to='/'>
+						<Link to='/'>
+							<Button variant='contained' className={SideMenuStyle.button}>
 								<FontAwesome.FaHome size={25} /> Home
-							</Link>
-						</Button>
+							</Button>
+						</Link>
 						<Divider />
 						<div className={SideMenuStyle.list}>
-							<Button className={SideMenuStyle.button}><Link to='/Profile'>Perfil</Link></Button>
+						<Link to='/Profile'><Button className={SideMenuStyle.button}>Perfil</Button></Link>
 							<br />
-							<Button className={SideMenuStyle.button}><Link to='/vehicles'>Vehículos</Link></Button>
+							<Link to='/vehicles'><Button className={SideMenuStyle.button}>Vehículos</Button></Link>
 						</div>
 						<Divider />
 						<div className={SideMenuStyle.info}>

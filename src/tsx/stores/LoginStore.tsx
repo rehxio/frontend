@@ -32,7 +32,7 @@ export class LoginStore {
 
 	@action validateLogin(name: string, password: string) {
 		superagent
-			.post('http://127.0.0.1:3000/user/login')
+			.post(`${process.env.API_HOST}/user/login`)
 			.send({ name, password })
 			.then(response => this.setUserToken(response.body.token))
 			.catch(err => {
