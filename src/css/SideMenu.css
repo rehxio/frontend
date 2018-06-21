@@ -30,11 +30,12 @@ Button.button:hover {
 }
 
 .userIcon {
-   width: 175px;
-   height: 175px;
+    background: lightblue;
+   width: 100%;
+   height: 70px;
    margin: auto;
    display: flex;
-   justify-content: center;
+   padding-left: 20px;
    align-items: center;
 }
 
@@ -48,7 +49,7 @@ Button.button:hover {
 .info {
    display: flex;
    margin: auto;
-   height: 47.5vh;
+   height: 63.5vh;
    justify-content: center;
    align-items: flex-end;
 }

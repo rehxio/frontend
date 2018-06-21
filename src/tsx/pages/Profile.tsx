@@ -5,12 +5,14 @@ import { SideMenuStore } from '../stores/SideMenuStore';
 import { ProfileStore } from '../stores/ProfileStore';
 import SideMenu from '../components/SideMenu';
 
+import * as ProfileStyle from '../../css/Profile.css';
+
 export interface ProfileProps {
 	profileStore?: ProfileStore;
 	sideMenuStore?: SideMenuStore;
 }
 
-@inject('profileStore' , 'sideMenuStore')
+@inject('profileStore', 'sideMenuStore')
 @observer
 export default class Profile extends React.Component<ProfileProps, {}> {
 
@@ -19,14 +21,13 @@ export default class Profile extends React.Component<ProfileProps, {}> {
 	}
 
 	render() {
-		const { profile } = this.props.profileStore;
 		return (
 			<div>
-				{this.props.sideMenuStore.open && <SideMenu/>}
-				<h1>Tu Perfil</h1>
-				<ul>
-					<h4>Nombre: </h4>{profile}
-				</ul>
+				{this.props.sideMenuStore.open && <SideMenu />}
+				<div className={ProfileStyle.container}>
+					<h1>Tu Perfil</h1>
+						<h4>Nombre: {this.props.sideMenuStore.userName}</h4>
+				</div>
 			</div>
 		);
 	}

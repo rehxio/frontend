@@ -26,12 +26,16 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 		this.props.sideMenuStore.toggleDrawer();
 	}
 
+	componentDidMount() {
+		this.props.sideMenuStore.setName.bind(this);
+	}
+
 	render() {
 		return (
 			<div>
 				<SwipeableDrawer open={this.props.sideMenuStore.open} onClose={this.toggleDrawer} onOpen={this.toggleDrawer}>
 					<div className={SideMenuStyle.drawer} tabIndex={0} role='button' onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
-						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={90} /></div>
+						<div className={SideMenuStyle.userIcon}><FontAwesome.FaUser size={20} />{this.props.sideMenuStore.userName}</div>
 						<Divider />
 						<Button variant='contained' className={SideMenuStyle.button}>
 							<Link to='/'>
@@ -47,10 +51,10 @@ export default class SideMenu extends React.Component<SideMenuProps, {}> {
 						<Divider />
 						<div className={SideMenuStyle.info}>
 							<Button className={SideMenuStyle.infoButton}>
-								<FontAwesome.FaTwitter size={15} />
+								<a target='_blank' href='https://twitter.com/car_where'><FontAwesome.FaTwitter size={15} /></a>
 							</Button>
-							<Button className={SideMenuStyle.infoButton}>
-								<FontAwesome.FaQuestion size={15} />
+							<Button className={SideMenuStyle.infoButton} type='button'>
+								<Link to='/info'><FontAwesome.FaQuestion size={15} /></Link>
 							</Button>
 						</div>
 					</div>

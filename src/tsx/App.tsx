@@ -6,6 +6,7 @@ import Vehicle from './pages/Vehicles';
 import stores from './stores';
 import { Provider } from 'mobx-react';
 import Profile from './pages/Profile';
+import Info from './pages/Info';
 
 export default class App extends React.Component {
 	render() {
@@ -16,6 +17,7 @@ export default class App extends React.Component {
 					<Route exact path='/' component={Home} />
 					<Route path='/vehicles' component={Vehicle} />
 					<Route path='/profile' component={Profile} />
+					<Route path='/info' component={Info} />
 				</div>
 			</Router>
 		</Provider>;
