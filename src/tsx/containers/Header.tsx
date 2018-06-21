@@ -21,6 +21,9 @@ export default class Header extends React.Component<HeaderProps, {}> {
 		super(props);
 		this.toggleDrawer = this.toggleDrawer.bind(this);
 		this.updateLocation = this.updateLocation.bind(this);
+		this.moveUpdate = this.moveUpdate.bind(this);
+		this.parkRemainder = this.parkRemainder.bind(this);
+		this.parkSuggestions = this.parkSuggestions.bind(this);
 	}
 
 	toggleDrawer() {
@@ -29,6 +32,18 @@ export default class Header extends React.Component<HeaderProps, {}> {
 
 	updateLocation() {
 		this.props.mapStore.geolocation();
+	}
+
+	moveUpdate() {
+		this.props.mapStore.setOffLocation();
+	}
+
+	parkRemainder() {
+		this.props.mapStore.parkRemainder();
+	}
+
+	parkSuggestions() {
+		this.props.mapStore.parkSuggestion();
 	}
 
 
@@ -42,9 +57,9 @@ export default class Header extends React.Component<HeaderProps, {}> {
 						<Button onClick={this.toggleDrawer}><FontAwesome.FaBars size={30} /></Button>
 							<div className={ButtonBar.topButton}>
 								<button className={ButtonBar.funcButton} onClick={this.updateLocation}><span>Aparcar</span></button>
-								<button className={ButtonBar.funcButton}><span>Salir</span></button>
-								<button className={ButtonBar.funcButton}><span>¿Donde aparqué?</span></button>
-								<button className={ButtonBar.should}><span>¿Donde debería aparcar?</span></button>
+								<button className={ButtonBar.funcButton} onClick={this.moveUpdate}><span>Salir</span></button>
+								<button className={ButtonBar.funcButton} onClick={this.parkRemainder}><span>¿Donde aparqué?</span></button>
+								<button className={ButtonBar.should} onClick={this.parkSuggestions}><span>¿Donde debería aparcar?</span></button>
 							</div>
 					</nav>
 				</div>;

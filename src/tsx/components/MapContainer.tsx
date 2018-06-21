@@ -6,21 +6,9 @@ import { observer, inject } from 'mobx-react';
 
 export interface MapContainerProps {
 	google: any;
-	zoom?: any;
 	mapStore?: MapStore;
 }
 
-export interface MarkersState {
-	latitude: number;
-	longitude: number;
-	id: string;
-}
-
-export interface MapContainerState {
-	ownMarkers?: MarkersState[];
-	parkMarkers?: MarkersState[];
-	zoom?: any;
-}
 
 const style = {
 	width: '98.99vw',
@@ -29,38 +17,10 @@ const style = {
 
 @inject('mapStore')
 @observer
-class MapContainer extends React.Component<MapContainerProps, MapContainerState> {
+class MapContainer extends React.Component<MapContainerProps, {}> {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			zoom: this.props.zoom,
-			ownMarkers: [],
-			parkMarkers: []
-		};
-	}
-
-
-
-	addParkMarker(id) {
-		const newParkMarkers = this.state.parkMarkers;
-		if (newParkMarkers !== undefined) {
-			newParkMarkers.push({ latitude: this.props.mapStore.lat, longitude: this.props.mapStore.lng, id });
-			this.setState({
-				parkMarkers: newParkMarkers
-			});
-		}
-	}
-
-
-	addCurrentMarker(lat, lng, id) {
-		const newOwnMarkers = this.state.ownMarkers;
-		if (newOwnMarkers !== undefined) {
-			newOwnMarkers.push({ latitude: this.props.mapStore.lat, longitude: this.props.mapStore.lng, id });
-			this.setState({
-				ownMarkers: newOwnMarkers
-			});
-		}
 	}
 
 	componentDidMount() {
@@ -74,17 +34,22 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 		return (
 			<Map google={this.props.google}
 				style={style}
+				initialCenter={{
+					lat: 28.1235459,
+					lng: -15.436257399999931
+				}}
 				center={{
 					lat: this.props.mapStore.lat,
 					lng: this.props.mapStore.lng
 				}}
+				zoom={this.props.mapStore.zoom}
 				onClick={'this.onMapClicked'}
 			>
 
-				{this.state.ownMarkers.map(marker => <Marker key={marker.id}
-					position={{ lat: marker.latitude, lng: marker.longitude }} />)}
-				{this.state.parkMarkers.map(marker => <Marker key={marker.id}
-					position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+				{this.props.mapStore.markers.map(marker => <Marker key={marker.id}
+					position={{ lat: marker.lat, lng: marker.lng }} />)}
+				{this.props.mapStore.parkMarkers.map(marker => <Marker key={marker.id}
+					position={{ lat: marker.lat, lng: marker.lng }} />)}
 
 			</Map>
 		);
