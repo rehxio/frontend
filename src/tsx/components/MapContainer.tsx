@@ -1,6 +1,6 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React = require('react');
-import * as keys from '../../../config/pass';
+import * as ENV from '../../../config/env';
 import { MapStore } from '../stores/MapStore';
 import { observer, inject } from 'mobx-react';
 
@@ -56,13 +56,19 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 	addCurrentMarker(lat, lng, id) {
 		const newOwnMarkers = this.state.ownMarkers;
 		if (newOwnMarkers !== undefined) {
-			newOwnMarkers.push({ latitude: lat, longitude: lng, id });
+			newOwnMarkers.push({ latitude: this.props.mapStore.lat, longitude: this.props.mapStore.lng, id });
 			this.setState({
 				ownMarkers: newOwnMarkers
 			});
 		}
 	}
 
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition(position => {
+			this.props.mapStore.lat = position.coords.latitude;
+			this.props.mapStore.lng = position.coords.longitude;
+		});
+	}
 
 	render() {
 		return (
@@ -86,5 +92,5 @@ class MapContainer extends React.Component<MapContainerProps, MapContainerState>
 }
 
 export default GoogleApiWrapper({
-	apiKey: keys.apikey
+	apiKey: ENV.APIKEY
 })(MapContainer);

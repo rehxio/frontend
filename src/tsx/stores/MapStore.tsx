@@ -2,6 +2,7 @@ import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
 import { USER_TOKEN } from './LoginStore';
 import { reportObserved } from 'mobx/lib/core/observable';
+import * as ENV from '../../../config/env';
 
 export class MapStore {
 
@@ -14,7 +15,7 @@ export class MapStore {
 			this.lng = position.coords.longitude;
 		});
 		superagent
-		.post('http://127.0.0.1:3000/park')
+		.post(`${ENV.API}/park`)
 		.send(this.lat, this.lng)
 		.then(alert('Ubicación guardada'))
 		.catch(err => alert('No se ha podido determinar la ubicación'));
@@ -23,7 +24,7 @@ export class MapStore {
 
 	@action setOffLocation() {
 		superagent
-		.post('http://127.0.0.1:3000/offpark')
+		.post(`${ENV.API}/offpark`)
 		.send()
 		.then(response => response) // FIXME
 		.catch(err => alert('no se ha podido desacivar la localizacion'));
