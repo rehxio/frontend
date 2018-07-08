@@ -21,6 +21,7 @@ export default class Vehicles extends React.Component<VehiclesProps, {}> {
 
 		this.newVehicle = this.newVehicle.bind(this);
 		this.removeVehicle = this.removeVehicle.bind(this);
+		this.toggleNew = this.toggleNew.bind(this);
 	}
 
 	componentDidMount() {
@@ -29,6 +30,10 @@ export default class Vehicles extends React.Component<VehiclesProps, {}> {
 
 	newVehicle() {
 		this.props.vehicleStore.newVehicle('Nuevo ' + Math.random());
+	}
+
+	toggleNew() {
+		this.props.vehicleStore.openNewVehicle();
 	}
 
 	removeVehicle() {
@@ -40,20 +45,20 @@ export default class Vehicles extends React.Component<VehiclesProps, {}> {
 		const { vehicles } = this.props.vehicleStore;
 		return <div>
 			{this.props.sideMenuStore.open && <SideMenu />}
-			{this.props.vehicleStore.open && <NewVehicle />}
 			<div>
 				<div className={VehicleStyle.title}>
 					<h1>Mis vehículos</h1>
 				</div>
 				<div className={VehicleStyle.containerbuttons}>
 					<div className={VehicleStyle.containeradd}>
-						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.newVehicle}>Añadir Vehículo</Button>
+						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.toggleNew}>Añadir Vehículo</Button>
 					</div>
 					<div className={VehicleStyle.containerremove}>
 						<Button variant='contained' className={VehicleStyle.buttons} onClick={this.removeVehicle}>Eliminar Vehículo</Button>
 					</div>
 				</div>
 			</div>
+			{this.props.vehicleStore.open && <NewVehicle />}
 			<ul>
 				{vehicles.map(vehicle => <li>{vehicle.identifier}</li>)}
 			</ul>

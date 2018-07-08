@@ -4,7 +4,7 @@ import { USER_TOKEN } from './LoginStore';
 import * as ENV from '../../../config/env';
 
 export class VehicleStore {
-	@observable vehicles = [];
+	@observable vehicles = [{id: '5b2bf4df0912330fcc56b336', identifier: 'Ford'}];
 	@observable open = false;
 	@action openNewVehicle() {
 		this.open = !this.open;

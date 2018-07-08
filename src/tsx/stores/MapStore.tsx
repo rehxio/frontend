@@ -1,11 +1,12 @@
 import { action, observable } from 'mobx';
 import * as superagent from 'superagent';
-import { USER_TOKEN } from './LoginStore';
+import { USER_TOKEN, USER_ID } from './LoginStore';
 import * as ENV from '../../../config/env';
+import { VehicleStore } from './VehicleStore';
+import { inject } from 'mobx-react';
+
 
 export class MapStore {
-
-
 	@observable lat: number;
 	@observable lng: number;
 	@observable zoom: number;
@@ -54,15 +55,23 @@ export class MapStore {
 			this.lng = position.coords.longitude;
 			this.zoom = 14;
 			this.addCurrentMarker(this.lat, this.lng, '0'); // FIXME arreglar id
+			console.log(window.localStorage.getItem(USER_ID));
 		});
 	}
 
-	@action parked() {
+	@action parked(id) {
 		superagent
+<<<<<<< HEAD
 			.post(`${ENV.API}/vehicle/park`)
 			.send(this.lat, this.lng)
 			.then(alert('Ubicación guardada'))
 			.catch(err => alert('No se ha podido determinar la ubicación' + err));
+=======
+			.post(`${ENV.API}/record/add`)
+			.send({ lat: this.lat, lng: this.lng, id_user: window.localStorage.getItem(USER_ID), id})
+			.then(alert('Ubicación guardada'))
+			.catch(err => alert('No se ha podido determinar la ubicación ' + err));
+>>>>>>> 71ccce6bca91fb1b34e550f98c21a3cba03e05fe
 	}
 
 

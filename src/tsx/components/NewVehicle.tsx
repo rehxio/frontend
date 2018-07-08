@@ -3,14 +3,14 @@ import { inject, observer } from 'mobx-react';
 import { VehicleStore } from '../stores/VehicleStore';
 
 export interface NewVehicleProps {
-	newVehicleStore?: VehicleStore;
+	vehicleStore?: VehicleStore;
 }
 
 export interface NewVehicleState {
 	identifier?: string;
 }
 
-@inject('newVehicleStore')
+@inject('vehicleStore')
 @observer
 export default class NewVehicle extends React.Component<NewVehicleProps, NewVehicleState> {
 	constructor(props) {
@@ -20,19 +20,17 @@ export default class NewVehicle extends React.Component<NewVehicleProps, NewVehi
 			identifier: ''
 		};
 
-		this.openNewVehicle = this.openNewVehicle.bind(this);
-	}
-
-	openNewVehicle() {
-		this.props.newVehicleStore.openNewVehicle();
+		this.onChangeInput = this.onChangeInput.bind(this);
 	}
 
 	onChangeInput(event) {
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	addNewVehicle() {
-		this.props.newVehicleStore.newVehicle(this.state.identifier);
+	addNewVehicle(event) {
+		event.preventDefault();
+		this.props.vehicleStore.newVehicle(this.state.identifier);
+		this.props.vehicleStore.openNewVehicle();
 	}
 
 	render() {
