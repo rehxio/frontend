@@ -30,7 +30,7 @@ export class MapStore {
 			id: '0'
 		};
 		this.parkMarkers = [{
-			lat: 0,
+			lat: -130, // Latitud inexistente para que no cargue por defecto
 			lng: 0,
 			id: '0'
 		}];
@@ -40,7 +40,6 @@ export class MapStore {
 		if (this.markers !== undefined) {
 			this.markers = { lat, lng, id };
 		}
-		console.log(this.markers);
 	}
 
 	addParkMarkers(lat, lng, id) {
@@ -60,10 +59,10 @@ export class MapStore {
 
 	@action parked() {
 		superagent
-		.post(`${ENV.API}/vehicle/park`)
-		.send(this.lat, this.lng)
-		.then(alert('Ubicación guardada'))
-		.catch(err => alert('No se ha podido determinar la ubicación'));
+			.post(`${ENV.API}/vehicle/park`)
+			.send(this.lat, this.lng)
+			.then(alert('Ubicación guardada'))
+			.catch(err => alert('No se ha podido determinar la ubicación' + err));
 	}
 
 
@@ -72,7 +71,7 @@ export class MapStore {
 			.post(`${ENV.API}/vehicle/offpark`)
 			.send()
 			.then(response => response) // FIXME
-			.catch(err => alert('no se ha podido desacivar la localizacion'));
+			.catch(err => alert('no se ha podido desacivar la localizacion' + err));
 	}
 
 	@action parkRemainder() {
@@ -83,7 +82,8 @@ export class MapStore {
 				this.lat = response.body.lat;
 				this.lng = response.body.lng;
 			})
-			.catch(err => alert('no se ha podido recordar su ubicación'));
+			.catch(err => alert('no se ha podido recordar su ubicación' + err));
+		this.addCurrentMarker(this.lat, this.lng, '0');
 	}
 
 	@action parkSuggestion() {
@@ -93,6 +93,6 @@ export class MapStore {
 			.then(response => {
 				response.map(coords => this.addParkMarkers(coords.lat, coords.lng, '0')); // FIXME areglar id
 			})
-			.catch(err => console.log('no se han podido cargar las ubicaciones'));
+			.catch(err => alert('no se han podido cargar las ubicaciones' + err));
 	}
 }
